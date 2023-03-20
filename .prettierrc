@@ -1,0 +1,11 @@
+{
+    "overrides": [
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "parser": "php",
+                "plugins": ["@prettier/plugin-php"]
+            }
+        }
+    ]
+}
