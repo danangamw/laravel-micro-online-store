@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -61,7 +62,7 @@ class CartController extends Controller
                 $item->setQuantity($quantity);
                 $item->setPrice($product->getPrice());
                 $item->setProductId($product->getId());
-                $item->setOrder($order->getId());
+                $item->setOrderId($order->getId());
                 $item->save();
                 $total = $total + ($product->getPrice() * $quantity);
             }
@@ -72,7 +73,7 @@ class CartController extends Controller
             Auth::user()->setBalance($newBalance);
             Auth::user()->save();
 
-            $request->session()->forget('products');
+            $req->session()->forget('products');
             $viewData = [];
             $viewData["title"] = "Purchase - Online Store";
             $viewData["subtitle"] = "Purchase Status";

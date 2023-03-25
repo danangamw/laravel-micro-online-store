@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,11 @@ Route::get('/cart', [CartController::class, 'index']);
 Route::get('/cart/delete', [CartController::class, 'delete']);
 Route::post('/cart/add/{id}', [CartController::class, 'add']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('/cart/purchase', [CartController::class, 'purchase']);
+    Route::get('/my-account/orders', [MyAccountController::class, 'orders']);
+});
+
 Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminHomeController::class, 'index']);
     Route::get('/admin/product', [AdminProductController::class, 'index']);
@@ -34,7 +40,6 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/product/{id}/delete', [AdminProductController::class, 'delete']);
     Route::get('/admin/product/{id}/edit', [AdminProductController::class, 'edit']);
     Route::put('/admin/product/{id}/update', [AdminProductController::class, 'update']);
-    Route::get('/cart/purchase', [CartController::class, 'purchase']);
 });
 
 Auth::routes();
