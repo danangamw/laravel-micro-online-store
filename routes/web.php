@@ -32,8 +32,9 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/product', [AdminProductController::class, 'index']);
     Route::post('/admin/product/store', [AdminProductController::class, 'store']);
     Route::delete('/admin/product/{id}/delete', [AdminProductController::class, 'delete']);
-    route::get('/admin/product/{id}/edit', [AdminProductController::class, 'edit']);
-    route::put('/admin/product/{id}/update', [AdminProductController::class, 'update']);
+    Route::get('/admin/product/{id}/edit', [AdminProductController::class, 'edit']);
+    Route::put('/admin/product/{id}/update', [AdminProductController::class, 'update']);
+    Route::get('/cart/purchase', [CartController::class, 'purchase']);
 });
 
 Auth::routes();
