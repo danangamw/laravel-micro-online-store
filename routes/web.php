@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart/delete', [CartController::class, 'delete']);
+Route::post('/cart/add/{id}', [CartController::class, 'add']);
 
 Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminHomeController::class, 'index']);

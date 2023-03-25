@@ -24,6 +24,7 @@
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" href="/">Home</a>
                     <a class="nav-link active" href="/products"> Products</a>
+                    <a class="nav-link active" href="/cart"> Cart</a>
                     <a class="nav-link active" href="/about"> About</a>
                     <div class="vr bg-white mx-2 d-none d-lg-block"></div>
                     @guest
@@ -52,11 +53,7 @@
     <div class="container my-4"> @yield('content') </div>
 
 
-    <!-- footer -->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container"> <small> Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
-                    href="https://twitter.com/danielgarax"> Daniel Correa </a> - <b>Paola Vallejo</b> </small> </div>
-    </div> <!-- footer -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>

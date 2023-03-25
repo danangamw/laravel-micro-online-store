@@ -23,13 +23,24 @@ class Product extends Model
         'image'
     ];
 
-    public static function validate($request) {
+    public static function validate($request)
+    {
         $request->validate([
-            "name"=>"required|max:255",
-            "description"=>"required",
-            "price"=>"required|numeric|gt:0",
-            "image"=>"image",
+            "name" => "required|max:255",
+            "description" => "required",
+            "price" => "required|numeric|gt:0",
+            "image" => "image",
         ]);
+    }
+
+    public static function sumPricesByQuantities($products, $productInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productInSession[$product->getId()]);
+        }
+
+        return $total;
     }
 
     public function getId()
